@@ -1,3 +1,4 @@
+import { House, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
@@ -93,9 +94,14 @@ export default function SearchPage() {
               placeholder="Enter search query..."
               className="flex-1"
             />
-            <Button type="submit" title="Search" />
+            <Button type="submit">
+              <Search />
+            </Button>
           </form>
-          <Button type="button" title="Homepage" onClick={backToHomePage} />
+
+          <Button type="button" onClick={backToHomePage}>
+            <House />
+          </Button>
         </CardContent>
       </Card>
     </div>

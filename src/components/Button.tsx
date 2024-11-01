@@ -7,7 +7,7 @@ export default function SearchButton(
       onClick={buttonProps.type === "button" ? buttonProps.onClick : undefined}
       className="border bg-[#2ea44f] rounded-md cursor-pointer py-2 px-4 hover:bg-[#2c974b]"
     >
-      {buttonProps.title}
+      {buttonProps.title || buttonProps.children}
     </button>
   );
 }
