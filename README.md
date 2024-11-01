@@ -22,10 +22,10 @@ Assurez-vous d'avoir installé les éléments suivants sur votre machine :
 
 1. Clonez le dépôt :
 
-   ```bash
-   git clone https://github.com/Miracuchi/search-api-front.git
-   cd your-repo
-   ```
+```bash
+git clone https://github.com/Miracuchi/search-api-front.git
+cd your-repo
+```
 
 2. Installer les dépendances :
 
