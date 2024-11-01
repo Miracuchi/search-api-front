@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+# Application de Recherche Documentaire
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cette application permet aux utilisateurs de rechercher des documents à l'aide d'une API externe. Elle comprend une barre de recherche où les utilisateurs peuvent saisir une requête, un bouton "Rechercher" pour soumettre la requête, et une section pour afficher les résultats de recherche. Les résultats incluent le temps d'exécution, le nombre total de résultats et les détails des résultats récupérés.
 
-Currently, two official plugins are available:
+## Fonctionnalités
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Barre de recherche pour entrer une requête.
+- Bouton "Rechercher" qui déclenche une recherche en utilisant une API externe.
+- Affichage des résultats de recherche, y compris :
+  - Temps d'exécution de la recherche
+  - Nombre total de résultats
+  - Détails de chaque résultat sous forme de JSON
 
-## Expanding the ESLint configuration
+## Prérequis
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Assurez-vous d'avoir installé les éléments suivants sur votre machine :
 
-- Configure the top-level `parserOptions` property like this:
+- [Node.js](https://nodejs.org/) (version 14 ou supérieure)
+- [Vite](https://vitejs.dev/) pour le développement de l'application
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Installation
+
+1. Clonez le dépôt :
+
+   ```bash
+   git clone https://github.com/Miracuchi/search-api-front.git
+   cd your-repo
+   ```
+
+2. Installer les dépendances :
+
+```bash
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. Configurez vos variables d'environnement :
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Créez un fichier .env à la racine du projet et ajoutez vos clés API comme suit :
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+VITE_PUBLIC_TOKEN_URL=your_token_url
+VITE_PUBLIC_API_URL=your_api_url
+VITE_PUBLIC_SEARCH_ENGINE_ID=your_search_engine_id
+
+## Lancement de l'application
+
+Pour démarrer l'application en mode développement, exécutez la commande suivante :
+
+```bash
+npm run dev
 ```
+
+Accédez à l'application à l'adresse suivante : http://localhost:3000 (ou le port spécifié dans le terminal).
