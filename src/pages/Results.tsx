@@ -69,8 +69,6 @@ export default function Results({
     }
   };
 
-  console.log("Inituia", initialResults);
-
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       {/* <SearchPage /> */}
