@@ -4,6 +4,7 @@ export default function Input(
   return (
     <>
       <input
+        required
         type={inputProps.type}
         onChange={inputProps.onChange}
         placeholder={inputProps.placeholder}

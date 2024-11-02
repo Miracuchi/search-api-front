@@ -17,9 +17,10 @@ export interface SearchResultCardProps {
 }
 
 export interface SearchResultsProps {
-  results: {
-    time: number;
-    total: number;
-    results: SearchResult[];
-  };
+  time: number;
+  total: number;
+  page: number;
+  size?: number;
+  maxPage: number;
+  results: SearchResult[];
 }

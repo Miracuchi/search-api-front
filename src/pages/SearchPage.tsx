@@ -4,24 +4,25 @@ import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/Card";
 import Input from "../components/Input";
-import {
-  GetFromLocalStorage,
-  SetToLocalStorage,
-} from "../utils/useLocalStorage";
+import { SearchResultsProps } from "../types/types";
+import UseLocalStorage from "../utils/useLocalStorage";
+import Results from "./Results";
 
 export default function SearchPage() {
+  const { getFromLocalStorage, setToLocalStorage } = UseLocalStorage();
   const [searchText, setSearchText] = useState<string>("");
-  const [token, setToken] = useState();
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
   const tokenUrl = import.meta.env.VITE_PUBLIC_TOKEN_URL;
   const adeleanApiUrl = import.meta.env.VITE_PUBLIC_API_URL;
   const searchEngineId = import.meta.env.VITE_PUBLIC_SEARCH_ENGINE_ID;
   const accessTokenKeyLS = "accessToken";
+  const [results, setResults] = useState<SearchResultsProps | null>(null);
 
   useEffect(() => {
-    const storedKey = GetFromLocalStorage(accessTokenKeyLS);
+    const storedKey = getFromLocalStorage(accessTokenKeyLS);
     if (storedKey) setToken(storedKey);
-  }, []);
+  }, [getFromLocalStorage]);
 
   const login = async () => {
     try {
@@ -36,7 +37,7 @@ export default function SearchPage() {
       if (!response.ok) throw new Error("Login Failed");
       const data = await response.json();
       setToken(data.accessToken);
-      SetToLocalStorage(accessTokenKeyLS, data.accessToken);
+      setToLocalStorage(accessTokenKeyLS, data.accessToken);
       return data.accessToken;
     } catch {
       throw new Error("Authentication Failed");
@@ -68,8 +69,8 @@ export default function SearchPage() {
         }),
       });
       const data = await response.json();
-
-      navigate("/results", { state: { results: data } });
+      navigate("/results");
+      setResults(data);
     } catch {
       throw new Error("Pas de résultat");
     }
@@ -77,6 +78,8 @@ export default function SearchPage() {
 
   const backToHomePage = () => {
     navigate("/");
+    setResults(null);
+    setSearchText("");
   };
 
   return (
@@ -104,6 +107,15 @@ export default function SearchPage() {
           </Button>
         </CardContent>
       </Card>
+
+      {results && (
+        <Results
+          results={results}
+          searchText={searchText}
+          accessToken={token}
+          setResults={setResults}
+        />
+      )}
     </div>
   );
 }
