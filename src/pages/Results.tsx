@@ -46,13 +46,12 @@ export default function Results({
       console.log("NEW", newResultsData);
 
       if (Array.isArray(newResultsData.results)) {
-        // Met à jour l'état results
         setResults((prevResults) => ({
           results: [...(prevResults?.results || []), ...newResultsData.results],
-          page: prevResults?.page ? prevResults.page + 1 : 1, // Incrémente la page actuelle
+          page: prevResults?.page ? prevResults.page + 1 : 1,
           maxPage: newResultsData.maxPage,
-          time: newResultsData.time || 0, // Définit une valeur par défaut
-          total: newResultsData.total || 0, // Définit une valeur par défaut
+          time: newResultsData.time || 0,
+          total: newResultsData.total || 0,
         }));
       } else {
         console.error(
@@ -71,7 +70,6 @@ export default function Results({
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
-      {/* <SearchPage /> */}
       <div className="flex items-center justify-between px-4">
         <h2 className="text-lg font-semibold text-blue-500">
           Search Results ({initialResults.total})
