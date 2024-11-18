@@ -15,7 +15,7 @@ Cette application permet aux utilisateurs de rechercher des documents à l'aide 
 
 Assurez-vous d'avoir installé les éléments suivants sur votre machine :
 
-- [Node.js](https://nodejs.org/) (version 14 ou supérieure)
+- [Node.js](https://nodejs.org/) (version 16 ou supérieure)
 - [Vite](https://vitejs.dev/) pour le développement de l'application
 
 ## Installation
